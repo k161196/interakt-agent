@@ -3,9 +3,11 @@
   "name": "Interakt Wallet Balance",
   "version": "1.0.0",
   "description": "Monitor Interakt.ai wallet balance",
+  "background":{"service_worker":"background.js"},
   "permissions": [
     "webRequest",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "action": {
     "default_popup": "popup.html"
@@ -27,6 +29,4 @@
     "matches": ["<all_urls>"]
   }
 ]
-} 
-
-
+}

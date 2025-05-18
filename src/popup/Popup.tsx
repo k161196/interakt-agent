@@ -9,13 +9,16 @@ const Popup: React.FC = () => {
 
   useEffect(() => {
     console.log('Setting up message listener for INTERAKT_WALLET_BALANCE');
-    chrome.runtime.onMessage.addListener((message) => {
+    chrome.runtime.onMessage.addListener((message,_sender, sendResponse) => {
       console.log('Received message in popup:', message);
       if (message.type === 'INTERAKT_WALLET_BALANCE') {
-        console.log('Updating balance to:', message.balance);
-        setBalance(message.balance);
+        console.log('Updating balance to:', message.data.balance);
+        setBalance(message.data.balance);
         setLoading(false);
       }
+
+      // Send a response back if needed
+      sendResponse({ status: "Message received successfully" });
     });
   }, []);
 
@@ -38,4 +41,4 @@ const Popup: React.FC = () => {
   );
 };
 
-export default Popup; 
+export default Popup;

@@ -70,7 +70,12 @@ const Content: React.FC = () => {
     if (event.data?.type === 'INTERAKT_WALLET_BALANCE') {
       console.log('[ContentScript] Received INTERAKT_WALLET_BALANCE:', event.data.balance);
       setBalance(event.data.balance);
-        setLoading(false);
+      setLoading(false);
+      console.log("sned message to chrome extnshion..")
+      chrome.runtime.sendMessage({
+        type: 'INTERAKT_WALLET_BALANCE',
+        balance:event.data.balance,
+      });
       // Now you can use event.data.balance
       // Optionally, forward to popup/background with chrome.runtime.sendMessage
     }
@@ -81,7 +86,7 @@ const Content: React.FC = () => {
 
   return (
     <div className="fixed top-4 right-4 z-50" style={{
-        "zIndex": 1000
+        "zIndex": 2000
     }}>
       <Card className="w-[200px]">
         <CardContent className="p-4">
@@ -99,4 +104,4 @@ const Content: React.FC = () => {
   );
 };
 
-export default Content; 
+export default Content;

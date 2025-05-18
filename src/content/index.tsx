@@ -4,8 +4,13 @@ import '../styles/globals.css';
 
 const container = document.createElement('div');
 // container.id = 'interakt-balance-root';
-container.id = 'mobile-header';
+container.id = 'interakt-agent';
 document.body.appendChild(container);
+
+// const rootDiv = document.getElementById('root');
+// const nested = rootDiv && rootDiv.querySelector('.target-class');
+// if(nested)
+// nested.appendChild(container);
 
 // Inject the fetch interceptor script from your extension
 // const script = document.createElement('script');
@@ -19,4 +24,4 @@ document.body.appendChild(container);
 // document.documentElement.appendChild(script);
 
 const root = createRoot(container);
-root.render(<Content/>); 
+root.render(<Content/>);
